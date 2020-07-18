@@ -11,6 +11,10 @@ import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {Icon} from 'native-base';
 import ProfileScreen from '../components/profile/ProfileScreen';
 import SettingsScreen from '../components/common/SettingsScreen';
+import SearchScreen from '../components/search/SearchScreen';
+import AddNewScreen from '../components/AddNew/AddNewScreen';
+import LogInWithOtp from '../components/login/LoginWithOtp';
+import LogInWithPassword from '../components/login/LoginWithPassword';
 
 const AppNavigator = createStackNavigator(
   {
@@ -27,6 +31,62 @@ const AppNavigator = createStackNavigator(
     initialRouteName: 'Home',
   },
 );
+
+const AddNewNavigator = createStackNavigator(
+  {
+    Home: {
+      screen: HomeScreen,
+    },
+    Login: {
+      screen: LoginScreen,
+    },
+    Settings: SettingsScreen,
+    Profile: ProfileScreen,
+    AddNew: AddNewScreen,
+  },
+  {
+    initialRouteName: 'AddNew',
+  },
+);
+
+const SearchNavigator = createStackNavigator(
+  {
+    Home: {
+      screen: HomeScreen,
+    },
+    Login: {
+      screen: LoginScreen,
+    },
+    Settings: SettingsScreen,
+    Profile: ProfileScreen,
+    AddNew: AddNewScreen,
+    Search: SearchScreen,
+  },
+  {
+    initialRouteName: 'Search',
+  },
+);
+
+const ProfileNavigator = createStackNavigator(
+  {
+    Home: {
+      screen: HomeScreen,
+    },
+    Login: {
+      screen: LoginScreen,
+    },
+    Settings: SettingsScreen,
+    Profile: ProfileScreen,
+    AddNew: AddNewScreen,
+    Search: SearchScreen,
+    LogInWithOtp: LogInWithOtp,
+    LogInWithPassword: LogInWithPassword,
+  },
+  {
+    initialRouteName: 'Profile',
+  },
+);
+
 const TabNavigator = createBottomTabNavigator(
   {
     Home: {
@@ -36,22 +96,22 @@ const TabNavigator = createBottomTabNavigator(
         tabBarIcon: ({focused, tintcolor}) => getIcons(focused, 'ios-home'),
       },
     },
-    Login: {
-      screen: LoginScreen,
+    AddNew: {
+      screen: AddNewNavigator,
       navigationOptions: {
-        tabBarLabel: 'Login',
+        tabBarLabel: 'Add',
         tabBarIcon: ({focused, tintcolor}) => getIcons(focused, 'ios-add'),
       },
     },
     Search: {
-      screen: LoginScreen,
+      screen: SearchNavigator,
       navigationOptions: {
-        tabBarLabel: 'Login',
+        tabBarLabel: 'Search',
         tabBarIcon: ({focused, tintcolor}) => getIcons(focused, 'ios-search'),
       },
     },
     Profile: {
-      screen: ProfileScreen,
+      screen: ProfileNavigator,
       navigationOptions: {
         tabBarLabel: 'Profile',
         tabBarIcon: ({focused, tintcolor}) => getIcons(focused, 'person'),
@@ -63,9 +123,6 @@ const TabNavigator = createBottomTabNavigator(
     tabBarOptions: {
       style: {height: 40},
       showLabel: false,
-      //   showIcon: true,
-      //   tintColor: '#333',
-      //   activeTintColor: '#aaa',
     },
   },
 );
@@ -82,7 +139,7 @@ const MainNavigator = createDrawerNavigator(
   },
 );
 
-export default createAppContainer(MainNavigator);
+export default createAppContainer(AppNavigator);
 
 const getIcons = (isFocused, icons) => {
   return (
