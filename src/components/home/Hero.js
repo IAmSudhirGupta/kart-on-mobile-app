@@ -26,9 +26,9 @@ const Center = styled.View`
   flex-direction: row;
 `;
 
-const Hero = ({videos}) => {
+const Hero = props => {
   const [selected, setSelected] = useState(0);
-
+  const {videos} = props;
   return (
     <Container
       orientation="vertical"
@@ -37,6 +37,7 @@ const Hero = ({videos}) => {
       {videos.map((item, index) => (
         <View key={item.id}>
           <VideoPlayer
+            {...props}
             poster={item.poster}
             video={item.video}
             isPlay={selected === index}

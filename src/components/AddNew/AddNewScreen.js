@@ -1,13 +1,18 @@
 import React, {Component} from 'react';
-import {View, Text} from 'native-base';
-import globalStyles from '../common/GlobalStyles';
+import {StatusBar} from 'react-native';
+import CameraApp from './Camera';
 
 export default class AddNewScreen extends Component {
   render() {
     return (
-      <View style={globalStyles.textCenter}>
-        <Text>Add New Screen</Text>
-      </View>
+      <>
+        <StatusBar
+          translucent
+          backgroundColor="transparent"
+          barStyle="light-content"
+        />
+        <CameraApp />
+      </>
     );
   }
 }

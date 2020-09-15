@@ -13,23 +13,6 @@ class HomeScreen extends Component {
   }
 
   static navigationOptions = ({navigation}) => ({
-    // headerTitle: () => <LogoTitle />,
-    // headerRight: () => (
-    //   <Button
-    //     transparent
-    //     onPress={() => console.log('Right Header Button Clicked...')}>
-    //     <Icon name="ios-gift" />
-    //   </Button>
-    // ),
-    // headerLeft: () => (
-    //   <Button transparent onPress={() => navigation.toggleDrawer()}>
-    //     <Icon name="menu" />
-    //   </Button>
-    // ),
-    // headerStyle: {
-    //   backgroundColor: '#fff',
-    //   height: 50,
-    // },
     headerShown: false,
   });
   render() {

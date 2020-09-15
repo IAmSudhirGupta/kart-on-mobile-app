@@ -15,6 +15,7 @@ import SearchScreen from '../components/search/SearchScreen';
 import AddNewScreen from '../components/AddNew/AddNewScreen';
 import LogInWithOtp from '../components/login/LoginWithOtp';
 import LogInWithPassword from '../components/login/LoginWithPassword';
+import NotificationScreen from '../components/notification/NotificationScreen';
 
 const AppNavigator = createStackNavigator(
   {
@@ -25,7 +26,22 @@ const AppNavigator = createStackNavigator(
       screen: LoginScreen,
     },
     Settings: SettingsScreen,
-    Profile: ProfileScreen,
+    Profile: {
+      screen: ProfileScreen,
+      navigationOptions: {
+        headerTransparent: true,
+      },
+    },
+    AddNew: {
+      screen: AddNewScreen,
+      navigationOptions: {
+        headerTransparent: true,
+        headerTitle: () => null,
+        headerTintColor: 'white',
+      },
+    },
+    Search: SearchScreen,
+    Notification: NotificationScreen,
   },
   {
     initialRouteName: 'Home',

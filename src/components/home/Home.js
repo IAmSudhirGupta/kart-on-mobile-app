@@ -12,7 +12,6 @@ const Container = styled.View`
 `;
 
 const Home = props => {
-  console.log('home component props', props);
   return (
     <>
       <StatusBar
@@ -22,8 +21,8 @@ const Home = props => {
       />
       <Container>
         {/* <AppHeader /> */}
-        <Hero videos={api} />
-        <Tabs />
+        <Hero videos={api} {...props} />
+        <Tabs {...props} />
       </Container>
     </>
   );

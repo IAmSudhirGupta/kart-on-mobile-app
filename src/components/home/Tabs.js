@@ -1,4 +1,5 @@
 import React from 'react';
+import {Alert} from 'react-native';
 import styled from 'styled-components';
 import HomeIcon from '../../assets/icons/home.png';
 import SearchIcon from '../../assets/icons/discover.png';
@@ -16,7 +17,8 @@ const Container = styled.View`
   border-top-width: 1px;
   border-top-color: rgba(255, 255, 255, 0.2);
   flex-direction: row;
-  background-color: transparent;
+  background-color: ${props =>
+    props.backgroundColor ? props.backgroundColor : 'transparent'};
 `;
 
 const Menu = styled.TouchableOpacity`
@@ -53,14 +55,17 @@ const Button = styled.TouchableOpacity`
   align-items: center;
 `;
 
-const Tabs = () => {
+const Tabs = props => {
+  const navigateToMenu = page => {
+    props.navigation.navigate(page);
+  };
   return (
-    <Container>
-      <Menu>
+    <Container backgroundColor={props.backgroundColor}>
+      <Menu onPress={() => navigateToMenu('Home')}>
         <CustomIcon source={HomeIcon} />
         <MenuText active={true}>Home</MenuText>
       </Menu>
-      <Menu>
+      <Menu onPress={() => navigateToMenu('Search')}>
         <CustomIcon source={SearchIcon} />
         <MenuText>Discover</MenuText>
       </Menu>
@@ -69,16 +74,16 @@ const Tabs = () => {
           start={{x: 1, y: 0}}
           Locations={[0, 0.5, 0.5, 1]}
           colors={['#f42365', '#f42365', '#37d7cf', '#37d7cf']}>
-          <Button>
+          <Button onPress={() => navigateToMenu('AddNew')}>
             <Icon name="ios-add" size={20} color="#808080" />
           </Button>
         </Border>
       </Menu>
-      <Menu>
+      <Menu onPress={() => navigateToMenu('Notification')}>
         <CustomIcon source={MessageIcon} />
         <MenuText>Message</MenuText>
       </Menu>
-      <Menu>
+      <Menu onPress={() => navigateToMenu('Profile')}>
         <CustomIcon source={ProfileIcon} />
         <MenuText>Profile</MenuText>
       </Menu>
