@@ -8,6 +8,7 @@ public class BasePackageList {
   public List<Package> getPackageList() {
     return Arrays.<Package>asList(
         new expo.modules.av.AVPackage(),
+<<<<<<< HEAD
         new expo.modules.camera.CameraPackage(),
         new expo.modules.constants.ConstantsPackage(),
         new expo.modules.errorrecovery.ErrorRecoveryPackage(),
@@ -20,6 +21,13 @@ public class BasePackageList {
         new expo.modules.permissions.PermissionsPackage(),
         new expo.modules.splashscreen.SplashScreenPackage(),
         new expo.modules.sqlite.SQLitePackage()
+=======
+        new expo.modules.constants.ConstantsPackage(),
+        new expo.modules.filesystem.FileSystemPackage(),
+        new expo.modules.imageloader.ImageLoaderPackage(),
+        new expo.modules.lineargradient.LinearGradientPackage(),
+        new expo.modules.permissions.PermissionsPackage()
+>>>>>>> 5b4936d851539b0671460c7da7624ba54501a5a3
     );
   }
 }
