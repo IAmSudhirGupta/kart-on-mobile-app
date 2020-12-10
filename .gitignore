@@ -29,6 +29,15 @@ build/
 local.properties
 *.iml
 
+flair-app/node_modules/
+kart-on-app/node_modules/
+
+flair-app/android/build
+kart-on-app/android/build
+
+flair-app/android/*.hprof
+kart-on-app/android/*.hprof
+
 # node.js
 #
 node_modules/
