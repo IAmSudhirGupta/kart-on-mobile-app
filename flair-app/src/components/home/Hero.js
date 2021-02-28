@@ -35,7 +35,7 @@ const Hero = props => {
       onPageSelected={e => setSelected(e.nativeEvent.position)}
       initialPage={0}>
       {videos.map((item, index) => (
-        <View key={item.id}>
+        <View key={item._id}>
           <VideoPlayer
             {...props}
             poster={item.poster}

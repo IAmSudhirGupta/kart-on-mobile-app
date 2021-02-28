@@ -1,31 +1,32 @@
 import React, {useState, useEffect} from 'react';
 import {Text, View, TouchableOpacity, StyleSheet, Platform} from 'react-native';
-import {Camera} from 'expo-camera';
+// import {Camera} from 'expo-camera';
 import {Ionicons} from '@expo/vector-icons';
-const {FlashMode: CameraFlashModes, Type: CameraTypes} = Camera.Constants;
+// const {FlashMode: CameraFlashModes, Type: CameraTypes} = Camera.Constants;
 
 const CameraApp = () => {
-  const [hasPermission, setHasPermission] = useState(null);
-  const [cameraRef, setCameraRef] = useState(null);
-  const [type, setType] = useState(Camera.Constants.Type.back);
-  const [flashMode, setFlashMode] = useState(Camera.Constants.FlashMode.off);
-  const [recording, setRecording] = useState(false);
+  // const [hasPermission, setHasPermission] = useState(null);
+  // const [cameraRef, setCameraRef] = useState(null);
+  // const [type, setType] = useState(Camera.Constants.Type.back);
+  // const [flashMode, setFlashMode] = useState(Camera.Constants.FlashMode.off);
+  // const [recording, setRecording] = useState(false);
 
-  useEffect(() => {
-    (async () => {
-      const {status} = await Camera.requestPermissionsAsync();
-      setHasPermission(status === 'granted');
-    })();
-  }, []);
-  if (hasPermission === null) {
-    return <View />;
-  }
-  if (hasPermission === false) {
-    return <Text>No access to camera</Text>;
-  }
+  // useEffect(() => {
+  //   (async () => {
+  //     const {status} = await Camera.requestPermissionsAsync();
+  //     setHasPermission(status === 'granted');
+  //   })();
+  // }, []);
+  // if (hasPermission === null) {
+  //   return <View />;
+  // }
+  // if (hasPermission === false) {
+  //   return <Text>No access to camera</Text>;
+  // }
   return (
     <View style={styles.mainContainer}>
-      <Camera
+      <Text>No access to camera</Text>;
+      {/* <Camera
         style={styles.mainContainer}
         type={type}
         ref={ref => {
@@ -65,7 +66,7 @@ const CameraApp = () => {
               <View style={styles.clickBtnCover}>
                 <View style={styles.imageBtn} />
               </View>
-            </TouchableOpacity> */}
+            </TouchableOpacity> }
           <TouchableOpacity
             style={styles.captureBtn}
             onPress={() => console.log('Gallery Images/Videos...')}>
@@ -111,6 +112,7 @@ const CameraApp = () => {
           </TouchableOpacity>
         </View>
       </Camera>
+      */}
     </View>
   );
 };

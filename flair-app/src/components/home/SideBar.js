@@ -41,7 +41,7 @@ const SideBar = ({item}) => {
     <Container>
       <Menu>
         <User>
-          <Avatar resizeMode="cover" source={item.user.avatar} />
+          <Avatar resizeMode="cover" source={{uri: item.user.avatar}} />
         </User>
       </Menu>
       <Menu>
