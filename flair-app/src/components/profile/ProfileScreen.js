@@ -10,6 +10,9 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
+import {connect} from 'react-redux';
+// import LogInWithOtp from '../login/LoginWithOtp';
+import Login from '../login/LoginScreen';
 
 const Container = styled.View`
   flex: 1;
@@ -35,7 +38,7 @@ const renderScene = SceneMap({
   second: SecondRoute,
 });
 
-export default class Profile extends Component {
+class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -44,11 +47,52 @@ export default class Profile extends Component {
         {key: 'first', title: 'First'},
         {key: 'second', title: 'Second'},
       ],
+      isLoggedIn: this.props.isLoggedIn,
     };
+  }
+  componentDidMount() {
+    // if (this.props.isLoggedIn) {
+    //   this.setState({isLoggedIn: true});
+    // } else {
+    //   this.setState({isLoggedIn: false});
+    // }
   }
   setIndex = index => {
     this.setState({index});
   };
+  renderProfile() {
+    return (
+      <Container>
+        <ImageContainer source={image}>
+          {/* <Text style={styles.text}>Inside</Text> */}
+        </ImageContainer>
+        <Image
+          style={styles.avatar}
+          source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}
+        />
+        <View style={styles.body}>
+          <TouchableOpacity style={styles.btn}>
+            <Text style={styles.editText}>Edit profile</Text>
+          </TouchableOpacity>
+          <View style={styles.profileSection}>
+            <Text style={styles.nameText}>Sudhir Gupta</Text>
+            <Text style={styles.idText}>@sudhir.g</Text>
+            <Text style={styles.tagLineText}>Come, Join and Explore...</Text>
+          </View>
+        </View>
+        <TabView
+          navigationState={{
+            index: this.state.index,
+            routes: this.state.routes,
+          }}
+          renderScene={renderScene}
+          onIndexChange={index => this.setIndex(index)}
+          initialLayout={initialLayout}
+          renderTabBar={renderTabBar}
+        />
+      </Container>
+    );
+  }
   render() {
     return (
       <>
@@ -57,39 +101,23 @@ export default class Profile extends Component {
           backgroundColor="black"
           barStyle="light-content"
         />
-        <Container>
-          <ImageContainer source={image}>
-            {/* <Text style={styles.text}>Inside</Text> */}
-          </ImageContainer>
-          <Image
-            style={styles.avatar}
-            source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}
-          />
-          <View style={styles.body}>
-            <TouchableOpacity style={styles.btn}>
-              <Text style={styles.editText}>Edit profile</Text>
-            </TouchableOpacity>
-            <View style={styles.profileSection}>
-              <Text style={styles.nameText}>Sudhir Gupta</Text>
-              <Text style={styles.idText}>@sudhir.g</Text>
-              <Text style={styles.tagLineText}>Come, Join and Explore...</Text>
-            </View>
-          </View>
-          <TabView
-            navigationState={{
-              index: this.state.index,
-              routes: this.state.routes,
-            }}
-            renderScene={renderScene}
-            onIndexChange={index => this.setIndex(index)}
-            initialLayout={initialLayout}
-            renderTabBar={renderTabBar}
-          />
-        </Container>
+        {this.state.isLoggedIn ? this.renderProfile() : <Login />}
       </>
     );
   }
 }
+const mapStateToProps = state => {
+  console.log(' state : ', state);
+  return {...state};
+};
+
+const mapDispatchToProps = () => {};
+
+export default connect(
+  mapStateToProps,
+  null,
+)(Profile);
+
 const renderTabBar = props => (
   <TabBar
     {...props}

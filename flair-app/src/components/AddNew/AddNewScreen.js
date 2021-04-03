@@ -62,7 +62,7 @@ export default class AddNewScreen extends Component {
           )} */}
           {/* <Text>{this.state.video.uri}</Text> */}
 
-          <View style={{flex: 1, flexDirection: 'row'}}>
+          <View style={{flex: 1, flexDirection: 'row', width: 200, height: 200}}>
             <Tile
               onPress={this.handleClick}
               imageSrc={{
